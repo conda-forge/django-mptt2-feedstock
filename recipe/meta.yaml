@@ -1,18 +1,18 @@
 {% set name = "django-mptt2" %}
-{% set version = "0.2.0" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/django-mptt2-{{ version }}.tar.gz
-  sha256: d1c290b1ab3dc1db3d42383b36459aba5ef3bbb461716a0a46fcb3f5a48d8a2c
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 54c3d829ec961d4c40bf2d2094225ac49cd22d1b1e52a28ada1492015b05b47b
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -20,6 +20,7 @@ requirements:
     - pip
     - setuptools
   run:
+    - django
     - python >={{ python_min }}
 
 test:
